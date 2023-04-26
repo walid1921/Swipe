@@ -1,0 +1,14 @@
+{
+  "name": "swipe",
+  "version": "1.0.0",
+  "description": "landing page",
+  "main": "index.js",
+  "scripts": {
+    "start": "node-sass sass/main.scss css/index.css index.js -w"
+  },
+  "author": "walid",
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^8.0.0"
+  }
+}

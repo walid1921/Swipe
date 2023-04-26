@@ -1,0 +1,60 @@
+//! NAVBAR
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+  max-width: var(--standard-width);
+  padding: 0 var(--spacing-md);
+
+  .menu {
+    @include center;
+    list-style: none;
+
+    a {
+      color: var(--color-white-light);
+      font-weight: bold;
+      margin: 0 var(--spacing-md);
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+    }
+  }
+}
+
+//! HERO CONTENT
+
+main {
+  margin: var(--spacing-xl) 0;
+}
+
+.hero {
+  p {
+    width: 480px;
+  }
+
+  .btn-container {
+    display: flex;
+    gap: var(--spacing-md);
+    margin: var(--spacing-md) 0;
+
+    Button:nth-of-type(2) {
+      color: var(--color-purple-1);
+    }
+
+  }
+
+  .hero-phone-container {
+    height: 564px;
+    align-items: flex-end;
+
+    .hero-phone {
+      height: 628px;
+      transform: translate(32px, -32px);
+
+    }
+  }
+}
