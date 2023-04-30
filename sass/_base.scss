@@ -1,5 +1,6 @@
 :root {
-  // COLORS
+  //! COLORS
+
   --color-black: #000;
   --color-white: #fff;
   --color-white-light: #f7f9fc;
@@ -27,8 +28,10 @@
   --p-height: 26px;
   --p-size-2: 14px;
   --p-heigh-2: 18px;
-  --btn-size: 16px // SPACING
-    --spacing-sm: 8px;
+  --btn-size: 16px;
+
+  //! SPACING
+  --spacing-sm: 8px;
   --spacing-md: 16px;
   --spacing-lg: 32px;
   --spacing-xl: 64px;
@@ -36,6 +39,8 @@
   --standard-width: 1144px;
 
   --line: 1px solid var(--color-grey-light-2);
+
+  --box-shadow: 0px 2px 40px rgba(0, 0, 0, 0.15)
 }
 
 @mixin center {
@@ -66,7 +71,12 @@ body {
   background-repeat: no-repeat;
   min-height: 100vh;
   padding: var(--spacing-md) 0 0 0;
-  background-color: #968873;
+  background-color: #fff;
+}
+
+main {
+  width: 100%;
+  margin: var(--spacing-xl) 0 0 0;
 }
 
 h1 {
@@ -80,11 +90,9 @@ h1 {
 
 h2 {
   font-family: var(--heading-font);
-  font-weight: 500;
-  font-size: var(--h2-size);
+  font-weight: 600;
+  font-size: var(--h3-size);
   width: 100%;
-  letter-spacing: -0.25px;
-  line-height: var(--h2-height);
 }
 
 h3 {
@@ -168,6 +176,29 @@ p {
 
 }
 
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0 var(--spacing-md);
+
+
+  .icon {
+    height: 50px;
+    margin: var(--spacing-md) 0;
+  }
+
+  h3 {
+    font-family: var(--heading-font);
+    font-weight: 500;
+    font-size: var(--h6-size);
+    width: 100%;
+  }
+
+
+}
+
 .subtitle,
 .subtitle-2 {
   color: var(--color-purple-1);
@@ -187,6 +218,8 @@ p {
   color: var(--color-grey);
   letter-spacing: 0.25px;
 }
+
+//! BUTTONS
 
 .primary-button {
   font-family: var(--body-font);
