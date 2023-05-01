@@ -1,6 +1,5 @@
 :root {
   //! COLORS
-
   --color-black: #000;
   --color-white: #fff;
   --color-white-light: #f7f9fc;
@@ -11,6 +10,7 @@
   --color-blue-dark: #0a2540;
   --btn-hover: #6d7a88;
 
+  //! TEXT STYLES
   --body-font: "Roboto", sans-serif;
   --heading-font: "Anek Telugu", sans-serif;
 
@@ -35,12 +35,12 @@
   --spacing-md: 16px;
   --spacing-lg: 32px;
   --spacing-xl: 64px;
-
   --standard-width: 1144px;
 
   --line: 1px solid var(--color-grey-light-2);
 
-  --box-shadow: 0px 2px 40px rgba(0, 0, 0, 0.15)
+  --box-shadow: 0px 2px 40px rgba(0, 0, 0, 0.15);
+  --border-radius: 20px; 
 }
 
 @mixin center {
@@ -49,6 +49,24 @@
   align-items: center;
 }
 
+// ! GRADIENT BACKGROUND 
+
+#gradient-canvas {
+  width: 200%;
+  height: 970px;
+  transform: rotate(-10deg);
+  position: absolute;
+  top: -600px;
+  left: -50%;
+  z-index: -1;
+  --gradient-color-1: #ef008f;
+  --gradient-color-2: #6ec3f4;
+  --gradient-color-3: #7038ff;
+  --gradient-color-4: #ffba27;
+
+}
+
+// ! GENERAL STYLES
 * {
   padding: 0;
   margin: 0;
@@ -219,14 +237,13 @@ p {
   letter-spacing: 0.25px;
 }
 
-//! BUTTONS
-
+//! BUTTONS STYLES
 .primary-button {
   font-family: var(--body-font);
   font-size: var(--btn-size);
   letter-spacing: 1.25px;
   font-weight: bold;
-  border-radius: 20px;
+  border-radius: var(--border-radius);
   border: none;
   color: var(--color-white);
   background-color: var(--color-blue-dark);
@@ -245,7 +262,7 @@ p {
   font-size: var(--btn-size);
   letter-spacing: 1.25px;
   font-weight: bold;
-  border-radius: 20px;
+  border-radius: var(--border-radius);
   border: none;
   color: var(--color-blue-dark);
   background-color: transparent;
@@ -277,3 +294,4 @@ p {
 
   }
 }
+

@@ -1,3 +1,29 @@
+
+const hamburger = document.querySelector(".hamburger");
+const bar1 = document.querySelector(".bar1");
+const bar2 = document.querySelector(".bar2");
+const bar3 = document.querySelector(".bar3");
+const mobileNav = document.querySelector(".mobileNav");
+
+hamburger.addEventListener("click", () => {
+  bar1.classList.toggle("animateBar1");
+  bar2.classList.toggle("animateBar2");
+  bar3.classList.toggle("animateBar3");
+  mobileNav.classList.toggle("openMobileNav");
+});
+
+window.addEventListener('scroll', function() {
+  const navbar = document.querySelector('.navbar');
+  const topOfNavbar = navbar.offsetTop;
+  if (window.scrollY > topOfNavbar) {
+    navbar.classList.add('color');
+  } else {
+    navbar.classList.remove('color');
+  }
+});
+
+//! -------------- Background ANIMATION --------------- 
+
 /*
  *   WebGl Gradient Animation
  *   ScrollObserver functionality to disable animation when not scrolled into view has been disabled and
@@ -869,3 +895,5 @@ class Gradient {
  */
 var gradient = new Gradient();
 gradient.initGradient("#gradient-canvas");
+
+

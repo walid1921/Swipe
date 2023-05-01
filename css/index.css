@@ -31,8 +31,21 @@
   --spacing-xl: 64px;
   --standard-width: 1144px;
   --line: 1px solid var(--color-grey-light-2);
-  --box-shadow: 0px 2px 40px rgba(0, 0, 0, 0.15)
-; }
+  --box-shadow: 0px 2px 40px rgba(0, 0, 0, 0.15);
+  --border-radius: 20px; }
+
+#gradient-canvas {
+  width: 200%;
+  height: 970px;
+  transform: rotate(-10deg);
+  position: absolute;
+  top: -600px;
+  left: -50%;
+  z-index: -1;
+  --gradient-color-1: #ef008f;
+  --gradient-color-2: #6ec3f4;
+  --gradient-color-3: #7038ff;
+  --gradient-color-4: #ffba27; }
 
 * {
   padding: 0;
@@ -175,7 +188,7 @@ p {
   font-size: var(--btn-size);
   letter-spacing: 1.25px;
   font-weight: bold;
-  border-radius: 20px;
+  border-radius: var(--border-radius);
   border: none;
   color: var(--color-white);
   background-color: var(--color-blue-dark);
@@ -190,7 +203,7 @@ p {
   font-size: var(--btn-size);
   letter-spacing: 1.25px;
   font-weight: bold;
-  border-radius: 20px;
+  border-radius: var(--border-radius);
   border: none;
   color: var(--color-blue-dark);
   background-color: transparent;
@@ -213,12 +226,12 @@ p {
     transition: transform 0.25s ease; }
 
 .navbar {
+  justify-content: center;
   display: flex;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
-  position: fixed;
   z-index: 999;
-  width: 100%;
   padding: var(--spacing-md) 0 0 0;
   max-width: var(--standard-width); }
   .navbar .menu {
@@ -232,19 +245,62 @@ p {
       margin: 0 var(--spacing-md); }
       .navbar .menu a:hover {
         text-decoration: underline; }
+  .navbar .hamburger {
+    height: 30px;
+    width: 25px;
+    display: none;
+    transition: all 0.3s ease-in-out;
+    z-index: 5; }
+    .navbar .hamburger:hover {
+      cursor: pointer; }
+    .navbar .hamburger .bar1,
+    .navbar .hamburger .bar2,
+    .navbar .hamburger .bar3 {
+      background-color: var(--color-black);
+      height: 3px;
+      width: 30px;
+      margin: 3px;
+      border-radius: var(--border-radius); }
+    .navbar .hamburger .animateBar1 {
+      animation: flipBar1 0.2s;
+      animation-fill-mode: forwards; }
+    .navbar .hamburger .animateBar2 {
+      animation: fadeBar2 0.2s;
+      animation-fill-mode: forwards; }
+    .navbar .hamburger .animateBar3 {
+      animation: flipBar3 0.2s;
+      animation-fill-mode: forwards; }
 
-#gradient-canvas {
-  width: 200%;
-  height: 970px;
-  transform: rotate(-10deg);
-  position: absolute;
-  top: -600px;
-  left: -50%;
-  z-index: -1;
-  --gradient-color-1: #ef008f;
-  --gradient-color-2: #6ec3f4;
-  --gradient-color-3: #7038ff;
-  --gradient-color-4: #ffba27; }
+.mobileNav {
+  display: none;
+  position: fixed;
+  z-index: 2;
+  top: -300px;
+  width: var(--standard-width);
+  height: 300px;
+  gap: 30px;
+  padding: 12px;
+  transition: transform 0.5s;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3); }
+  .mobileNav .menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px; }
+    .mobileNav .menu li {
+      list-style: none; }
+      .mobileNav .menu li a {
+        color: var(--color-black); }
+        .mobileNav .menu li a:hover {
+          color: var(--color-white); }
+
+.openMobileNav {
+  transform: translateY(300px); }
 
 .hero {
   width: 100%;
@@ -309,24 +365,25 @@ p {
   .graphic-section #card {
     grid-area: card;
     width: 100%;
-    box-shadow: var(--box-shadow); }
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius); }
   .graphic-section #slack {
     grid-area: slack;
     width: 100%;
-    box-shadow: var(--box-shadow); }
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius); }
   .graphic-section #phone {
     grid-area: phone;
-    width: 100%;
-    box-shadow: var(--box-shadow); }
+    width: 100%; }
   .graphic-section #dash {
     grid-area: dash;
     width: 100%;
-    box-shadow: var(--box-shadow); }
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius); }
 
 .designed-section {
   color: var(--color-white-light);
   padding: calc(var(--spacing-xl) * 3) 0;
-  width: 100%;
   display: flex;
   justify-content: center;
   position: relative;
@@ -356,14 +413,13 @@ p {
       width: 50%; }
   .designed-section .col-right #terminal {
     max-width: 470px;
-    border-radius: 20px;
+    border-radius: var(--border-radius);
     margin-top: var(--spacing-md); }
   .designed-section .col-right #api-code {
     max-width: 470px;
-    border-radius: 20px; }
+    border-radius: var(--border-radius); }
 
 .why-swipe-section {
-  width: 100%;
   display: flex;
   justify-content: center;
   padding: calc(var(--spacing-xl) * 3) 0; }
@@ -379,11 +435,10 @@ p {
 
 .global-section {
   color: var(--color-white);
-  width: 100%;
   display: flex;
   justify-content: center;
   position: relative;
-  padding: calc(var(--spacing-xl) * 3) 0; }
+  padding: calc(var(--spacing-xl) * 3) 0 calc(var(--spacing-xl) * 2) 0; }
   .global-section::before {
     content: "";
     width: 100%;
@@ -416,7 +471,6 @@ p {
     top: 10%; }
 
 .virtual-section {
-  width: 100%;
   display: flex;
   justify-content: center;
   padding: calc(var(--spacing-xl) * 2) 0;
@@ -434,7 +488,7 @@ p {
     width: 540px;
     height: 446px;
     box-shadow: var(--box-shadow);
-    border-radius: 20px;
+    border-radius: var(--border-radius);
     overflow: hidden; }
     .virtual-section .swipe-card .card-top {
       width: 100%;
@@ -475,9 +529,14 @@ p {
     margin-top: var(--spacing-md); }
     .waiting-section .primary-button:hover {
       background-color: var(--color-blue-dark); }
+  .waiting-section .section-container {
+    padding: 0 var(--spacing-md);
+    align-items: center; }
   .waiting-section .col-left {
     padding: 0 var(--spacing-xl) 0 0;
-    height: 250px; }
+    height: 250px;
+    display: flex;
+    justify-content: center; }
   .waiting-section .col-right .card-container {
     display: flex; }
     .waiting-section .col-right .card-container .card {
@@ -494,7 +553,9 @@ p {
   .footer .section-container {
     display: flex; }
     .footer .section-container .col {
-      width: 25%; }
+      width: 25%;
+      display: flex;
+      flex-direction: column; }
       .footer .section-container .col #footer-logo {
         width: 108px;
         margin-bottom: var(--spacing-md); }
@@ -520,3 +581,219 @@ p {
           color: var(--color-black); }
         .footer .section-container .col ul li {
           margin: var(--spacing-md) 0; }
+
+@media only screen and (max-width: 1144px) {
+  :root {
+    --h1-size: 70px;
+    --h1-height: 90px; }
+  .section-container {
+    padding: 0 var(--spacing-md); }
+  .navbar {
+    padding: 0 var(--spacing-md); }
+  .hero {
+    padding: 0; }
+    .hero p {
+      width: 100%; }
+    .hero .section-container {
+      align-items: center; }
+    .hero .hero-phone-container .hero-phone {
+      transform: translate(-32px); } }
+
+@media only screen and (max-width: 850px) {
+  :root {
+    --h1-size: 50px;
+    --h1-height: 55px; }
+  main {
+    margin: 0; }
+  .hero {
+    padding: 0; }
+    .hero p {
+      width: 100%; }
+    .hero .section-container {
+      align-items: center; }
+    .hero .hero-phone-container .hero-phone {
+      height: 500px;
+      transform: translate(-32px); }
+  .logos .logos-grid {
+    grid-template-columns: repeat(2, 1fr); }
+  .virtual-section .swipe-card .card-top {
+    justify-content: start; }
+    .virtual-section .swipe-card .card-top .swipe {
+      width: 250px;
+      margin-left: var(--spacing-xl); } }
+
+@media only screen and (max-width: 768px) {
+  :root {
+    --h1-size: 50px;
+    --h1-height: 55px;
+    --h3-size: 34px; }
+  .navbar .menu {
+    display: none; }
+  .navbar .nav-btn {
+    display: none; }
+  .navbar .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    right: var(--spacing-md); }
+  .mobileNav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+  .logos .logos-grid {
+    margin-bottom: var(--spacing-xl); }
+  .hero {
+    padding: 0; }
+    .hero p {
+      width: 330px; }
+    .hero .section-container {
+      align-items: center; }
+    .hero .col-left {
+      width: 60%; }
+    .hero .col-right {
+      width: 40%; }
+    .hero .hero-phone-container .hero-phone {
+      height: 450px;
+      transform: translateX(32px); }
+  .unified-platform h2 {
+    width: 100%; }
+  .designed-section {
+    padding: var(--spacing-xl) 0; }
+    .designed-section .card-container {
+      flex-direction: column; }
+      .designed-section .card-container .card {
+        width: 100%; }
+  .why-swipe-section {
+    padding: calc(var(--spacing-xl) * 3) 0 var(--spacing-xl) 0; }
+    .why-swipe-section .icon {
+      height: 40px;
+      width: 40px; }
+    .why-swipe-section .card-container {
+      flex-wrap: wrap; }
+      .why-swipe-section .card-container .card {
+        width: 50%;
+        margin: var(--spacing-md) 0; }
+  .global-section {
+    padding: calc(var(--spacing-xl) * 2) var(--spacing-xl) 0 0; }
+    .global-section .card-container {
+      flex-wrap: wrap;
+      margin: var(--spacing-xl) 0; }
+      .global-section .card-container .card {
+        width: 50%;
+        margin: var(--spacing-md) 0; }
+  .virtual-section .swipe-card .card-top .swipe {
+    margin-left: var(--spacing-md); }
+  .waiting-section .col-right .card-container {
+    flex-wrap: wrap; } }
+
+@media only screen and (max-width: 550px) {
+  :root {
+    --h1-size: 55px;
+    --h1-height: 55px;
+    --h3-size: 34px; }
+  .two-col {
+    flex-direction: column; }
+    .two-col .col-left {
+      width: 100%; }
+    .two-col .col-right {
+      width: 100%;
+      padding: 0; }
+  .navbar {
+    padding-bottom: var(--spacing-lg); }
+  #gradient-canvas {
+    height: 820px; }
+  .hero {
+    padding: var(--spacing-lg) 0 0 0; }
+    .hero p {
+      width: 100%; }
+    .hero .hero-phone-container {
+      display: none; }
+  .logos .logos-grid {
+    grid-template-columns: repeat(2, 1fr); }
+    .logos .logos-grid img {
+      height: auto;
+      width: 100%; }
+  .designed-section {
+    padding: calc(var(--spacing-xl) *2) 0 0 0; }
+    .designed-section .col-right {
+      display: none; }
+  .why-swipe-section .icon {
+    height: 35px;
+    width: 35px; }
+  .why-swipe-section .card-container .card {
+    width: 100%;
+    margin: var(--spacing-sm) 0; }
+  .global-section {
+    padding: var(--spacing-xl) 0 0 0; }
+    .global-section #globe {
+      opacity: 10%; }
+    .global-section .card-container .card {
+      width: 100%; }
+  .virtual-section {
+    padding: var(--spacing-md) 0; }
+    .virtual-section .col-left {
+      padding: 0; }
+    .virtual-section .swipe-card {
+      width: 100%;
+      height: 350px; }
+      .virtual-section .swipe-card .card-top {
+        height: 50%; }
+        .virtual-section .swipe-card .card-top .swipe {
+          width: 250px;
+          justify-content: start; }
+        .virtual-section .swipe-card .card-top .avatars img {
+          width: 50px; }
+          .virtual-section .swipe-card .card-top .avatars img:nth-of-type(2) {
+            left: 36px; }
+      .virtual-section .swipe-card .card-bottom {
+        height: 50%; }
+        .virtual-section .swipe-card .card-bottom .bottom-content .p2 {
+          width: 100%; }
+  .waiting-section .col-right .card-container {
+    flex-wrap: wrap;
+    margin: var(--spacing-xl) 0; }
+    .waiting-section .col-right .card-container .card {
+      margin: var(--spacing-sm) 0; }
+      .waiting-section .col-right .card-container .card .icon {
+        height: 30px;
+        margin: var(--spacing-md) 0; }
+  .footer .section-container {
+    flex-wrap: wrap; }
+    .footer .section-container .col {
+      width: 50%;
+      margin: var(--spacing-md) 0; }
+      .footer .section-container .col a {
+        font-size: 14px; }
+      .footer .section-container .col #footer-logo {
+        width: 70px; }
+      .footer .section-container .col .icon-link img {
+        width: 18px; } }
+
+html,
+body {
+  width: 100%;
+  position: relative;
+  overflow-x: hidden; }
+
+@keyframes flipBar1 {
+  from {
+    transform: rotate(0); }
+  to {
+    transform: rotate(45deg) translate(3px, 10px); } }
+
+@keyframes fadeBar2 {
+  from {
+    transform: scaleX(1);
+    opacity: 1; }
+  to {
+    transform: scaleX(0);
+    opacity: 0; } }
+
+@keyframes flipBar3 {
+  from {
+    transform: rotate(0); }
+  to {
+    transform: rotate(-45deg) translate(3px, -10px); } }
